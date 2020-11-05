@@ -8,16 +8,15 @@
 </head>
 <body>
   <h1>Guess the Number!</h1>
-  <form>
-    <label>Enter the upper bound:</label>
-    <input type="number">
-    <label>Enter the lower bound:</label>
-    <input type="number">
-    <label>Enter your guess:</label>
-    <input type="number">
-    <input type="submit">
-  </form>
-
+  <div id="form-container">
+    <form id="form">
+      <label>Enter your guess!</label>
+      <input type="text" id="guess" name="guess">
+      <button type="submit">Guess Away,</button>
+    </form>
+  </div>
+  <div id="message"></div>
+  <div id="guesses"></div>
   <script src="js/main.js"></script>
 </body>
 </html>
