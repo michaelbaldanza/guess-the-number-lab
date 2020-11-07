@@ -45,12 +45,30 @@ formEl.addEventListener('submit', function(evt) {
 game.play();
 
 function takeTurn() {
-  game.prevGuesses.push(game.guess);
-  console.log(game.prevGuesses);
+  if (!isNaN(game.guess) &&
+      game.guess >= game.getSmallNum() &&
+      game.guess <= game.getBigNum()) {
+    game.prevGuesses.push(game.guess);
+    console.log(game.prevGuesses);
+  }
 }
 
 function render() {
-  if (game.guess === game.secretNum) {
-    message.textContent = `Congrats! You guessed the number in ${game.prevGuesses.length} guesses!`;
+  let bigNum = game.getBigNum();
+  let smallNum = game.getSmallNum();
+  guessSubEl.value = '';
+  console.log(game.guess);
+  console.log('pause');
+  if (isNaN(game.guess)) {
+    message.textContent = `Please enter a number!`
+  } else if (game.guess > bigNum || game.guess < smallNum) {
+    message.textContent = `Please enter a guess between ${smallNum} and ${bigNum}`;
+  } else {
+      if (game.guess === game.secretNum) {
+      message.textContent = `Congrats!
+        You guessed the number in ${game.prevGuesses.length} ${game.prevGuesses.length > 1 ? 'guesses' : 'guess'}!`;
+    } else {
+      message.textContent = ``
+    }
   }
 }
