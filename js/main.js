@@ -68,7 +68,7 @@ function render() {
       message.textContent = `Congrats!
         You guessed the number in ${game.prevGuesses.length} ${game.prevGuesses.length > 1 ? 'guesses' : 'guess'}!`;
     } else {
-      message.textContent = ``
+      message.textContent = `Your guess is too ${game.guess > game.secretNum ? 'high' : 'low'}.`;
     }
   }
 }
